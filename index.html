@@ -8,65 +8,93 @@
 <style>
 body {
     margin: 0;
+    height: 100vh;
     overflow: hidden;
     background: linear-gradient(135deg, #ffe6f0, #e6f7ff);
     font-family: Arial, sans-serif;
+}
+
+/* מרכז הכל באמצע */
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
+    z-index: 10;
 }
 
 h1 {
-    margin-top: 40px;
     color: #ff4081;
     font-size: 32px;
+    margin-bottom: 20px;
 }
 
 .cake {
     font-size: 80px;
-    margin-top: 20px;
-}
-
-.balloon {
-    position: absolute;
-    bottom: -100px;
-    width: 40px;
-    height: 50px;
-    border-radius: 50%;
-    animation: floatUp 6s infinite ease-in;
-}
-
-@keyframes floatUp {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(-120vh); opacity: 0; }
+    margin: 10px 0;
 }
 
 img {
     width: 220px;
-    margin-top: 20px;
     border-radius: 20px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* בלון אמיתי יותר */
+.balloon {
+    position: absolute;
+    bottom: -120px;
+    width: 40px;
+    height: 50px;
+    border-radius: 50% 50% 45% 45%;
+    animation: floatUp linear infinite;
+}
+
+/* חוט של בלון */
+.balloon::after {
+    content: "";
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    width: 2px;
+    height: 40px;
+    background: rgba(0,0,0,0.2);
+    transform: translateX(-50%);
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-120vh);
+        opacity: 0;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<h1>המון מזל טוב ליום ההולדת פירה שלנו 🎉</h1>
+<div class="center">
+    <h1>המון מזל טוב ליום ההולדת פירה שלנו 🎉</h1>
+    <div class="cake">🎂</div>
 
-<div class="cake">🎂</div>
-
-<!-- תמונה (אפשר להחליף) -->
-<img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="birthday">
+    <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="birthday">
+</div>
 
 <script>
 const colors = ["#ff4d6d", "#ffb703", "#8ecae6", "#219ebc", "#ff69b4"];
 
-for (let i = 0; i < 30; i++) {
+for (let i = 0; i < 25; i++) {
     let balloon = document.createElement("div");
     balloon.classList.add("balloon");
 
     balloon.style.left = Math.random() * 100 + "vw";
     balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
-    balloon.style.animationDuration = (4 + Math.random() * 4) + "s";
+    balloon.style.animationDuration = (5 + Math.random() * 5) + "s";
 
     document.body.appendChild(balloon);
 }
