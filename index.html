@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>יום הולדת 🎉</title>
+
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ffe6f0, #e6f7ff);
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 40px;
+    color: #ff4081;
+    font-size: 32px;
+}
+
+.cake {
+    font-size: 80px;
+    margin-top: 20px;
+}
+
+.balloon {
+    position: absolute;
+    bottom: -100px;
+    width: 40px;
+    height: 50px;
+    border-radius: 50%;
+    animation: floatUp 6s infinite ease-in;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-120vh); opacity: 0; }
+}
+
+img {
+    width: 220px;
+    margin-top: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+</style>
+</head>
+
+<body>
+
+<h1>המון מזל טוב ליום ההולדת פירה שלנו 🎉</h1>
+
+<div class="cake">🎂</div>
+
+<!-- תמונה (אפשר להחליף) -->
+<img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="birthday">
+
+<script>
+const colors = ["#ff4d6d", "#ffb703", "#8ecae6", "#219ebc", "#ff69b4"];
+
+for (let i = 0; i < 30; i++) {
+    let balloon = document.createElement("div");
+    balloon.classList.add("balloon");
+
+    balloon.style.left = Math.random() * 100 + "vw";
+    balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
+    balloon.style.animationDuration = (4 + Math.random() * 4) + "s";
+
+    document.body.appendChild(balloon);
+}
+</script>
+
+</body>
+</html>
